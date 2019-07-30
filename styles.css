@@ -42,13 +42,11 @@ html, body {
     grid-column: 3;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-color: rgb(114, 109, 109);
 }
 
 i {
    color: white;
-   position: absolute;
 }
 
 .btn {
@@ -60,6 +58,7 @@ i {
     border-radius: 10px;
     cursor: pointer;
     font-size: 1.25rem;
+    position: relative;
 }
 
 .btn:hover {
