@@ -47,6 +47,8 @@ html, body {
 
 i {
    color: white;
+   position: absolute;
+   
 }
 
 .btn {
