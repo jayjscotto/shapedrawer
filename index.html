@@ -7,6 +7,7 @@
     <script src="https://use.fontawesome.com/ecd707be4b.js"></script>
     <link rel="stylesheet" href="styles.css" class="stylesheet">
     <title>ShapeDrawer (Quick Example)</title>
+    
 </head>
 <body class="typ">
     <div class="wrapper h100">
@@ -30,9 +31,12 @@
         <div class="gc1-4 row-2">
 
         </div>
-        <div class="toolbar">
+        <div id="toolbar" class="toolbar">
             <button class="btn">
-                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64"><defs><style>.cls-1{fill:#999;}.cls-2{fill:black;}</style></defs><title>square</title><rect class="cls-1" x="1" y="1" width="94" height="62"/><path class="cls-2" d="M94,2V62H2V2H94m2-2H0V64H96V0Z"/></svg>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64"><defs><style>.cls-1{fill:#999;}.cls-2{fill:#e6e6e6;}</style></defs><title>square</title><rect class="cls-1" x="2" y="2" width="92" height="60"/><path class="cls-2" d="M92,20V76H4V20H92m4-4H0V80H96V16Z" transform="translate(0 -16)"/></svg>
+            </button>
+            <button class="btn">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs><style>.cls-1{fill:#999;}.cls-2{fill:#e6e6e6;}</style></defs><title>elipse</title><ellipse class="cls-1" cx="48" cy="32" rx="45.5" ry="29.5"/><path class="cls-2" d="M48,21c11.85,0,22.91,3,31.17,8.53C86.8,34.62,91,41.18,91,48S86.8,61.38,79.17,66.47C70.91,72,59.85,75,48,75s-22.91-3-31.17-8.53C9.2,61.38,5,54.82,5,48S9.2,34.62,16.83,29.53C25.09,24,36.15,21,48,21m0-5C21.49,16,0,30.33,0,48S21.49,80,48,80,96,65.67,96,48,74.51,16,48,16Z" transform="translate(0 -16)"/></svg>
             </button>
         </div>
 
@@ -54,5 +58,50 @@
             </button>
         </div> -->
     </div>
+    <script>
+            //Make the DIV element draggagle:
+            dragElement(document.getElementById("toolbar"));
+            
+            function dragElement(elmnt) {
+              var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            //   if (document.getElementById(elmnt.id + "header")) {
+            //     /* if present, the header is where you move the DIV from:*/
+            //     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            //   } else {
+            //     /* otherwise, move the DIV from anywhere inside the DIV:*/
+            //   }
+                elmnt.onmousedown = dragMouseDown;
+            
+              function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+              }
+            
+              function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+              }
+            
+              function closeDragElement() {
+                /* stop moving when mouse button is released:*/
+                document.onmouseup = null;
+                document.onmousemove = null;
+              }
+            }
+            </script>
 </body>
 </html>

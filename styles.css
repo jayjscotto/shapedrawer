@@ -6,7 +6,7 @@
 }
 
 :root {
-    --background-color: rgb(114, 109, 109);
+    --background-color: #424242;
     --header-color: rgb(54, 53, 53);
     --display-area-width: 85%;
     --display-toolbar-width: calc((100% - var(--display-area-width)) / 2);
@@ -67,7 +67,7 @@ html, body {
 
 .btn {
     position: relative; 
-    background-color: var(--background-color);
+    background-color: transparent;
     padding-bottom: 100%;
     cursor: pointer;
     width: 100%;
@@ -79,12 +79,12 @@ html, body {
 }
 
 .btn svg {
-    filter: invert(100);
+    /* filter: invert(100); */
     position: absolute;
     top: 0;
     left: 0;
     left: var(--icon-padding);
-    top: var(--icon-padding);
+    top: 25%;
     width: var(--icon-width);
 }
 
@@ -101,6 +101,9 @@ html, body {
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: grey;
-    width: 5%;
+    background-color: var(--background-color);
+    width: 36px;
+    border-radius: 4px;
+    shape-rendering: geometricPrecision;
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
 }
