@@ -2,22 +2,40 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: none;
+}
+
+:root {
     --background-color: rgb(114, 109, 109);
     --header-color: rgb(54, 53, 53);
+    --display-area-width: 85%;
+    --display-toolbar-width: calc((100% - var(--display-area-width)) / 2);
+    --title-bar-height: 50px;
+    --ui-height: calc(100% - var(--title-bar-height));
+    --ui-mid-with: 800x;
+    --shape-list-padding: 2px;
+    --font-family: Arial;
+    --font-color: white;
+    --icon-width: 80%;
+    --icon-padding: calc((100% - var(--icon-width)) / 2);
+
 }
 
 html, body {
     height: 100%;
-    font-family: Arial;
-    color: white;
+}
+
+.typ {
+    font-family: var(--font-family);
+    color: var(--font-color);
 }
 
 .wrapper {
     display: grid;
-    grid-template-rows: 50px calc(100% - 50px);
-    grid-template-columns: 7.5% 85% 7.5%;
+    grid-template-rows: var(--title-bar-height) var(--ui-height);
+    grid-template-columns: var(--display-toolbar-width) var(--display-area-width) var(--display-toolbar-width);
+    min-width: var(--ui-mid-with);
     height: 100%;
-    min-width: 800px;
 }
 
 .title {
@@ -26,53 +44,28 @@ html, body {
     grid-column: 1 / 4;
 }
 
-
-.shape-list {
-    grid-row: 2;
+.gc-1 {
     grid-column: 1;
-    background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    text-align: center;
 }
 
-.shape-list li {
-    padding: 0.75em 0;
-}
-
-.shape-list img {
-    position: relative;
-    width: 80%;
-   
-}
-
-.canvas {
-    grid-row: 2;
+.gc-2 {
     grid-column: 2;
 }
 
-.menu {
-    grid-row: 2;
+.gc-3 {
     grid-column: 3;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--background-color);
-    padding: 2%;
 }
 
-i {
-   font-size: 3em!important;
-   color: white;
+.icon-tray {
+    background-color: var(--background-color);
+    padding: var(--shape-list-padding);
 }
 
 .btn {
-    width: 100%;
     position: relative; 
     background-color: var(--background-color);
     padding-bottom: 100%;
-    margin: 0.5em auto;
-    border: none;
+    margin: 0.5em 0;
     cursor: pointer;
 }
 
@@ -83,7 +76,16 @@ i {
 .btn img {
     filter: invert(100);
     position: absolute;
-    left: 10%;
-    top: 10%;
-    width: 80%;
+    left: var(--icon-padding);
+    top: var(--icon-padding);
+    width: var(--icon-width);
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-2 {
+    grid-row: 2;
 }

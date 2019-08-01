@@ -8,38 +8,40 @@
     <link rel="stylesheet" href="styles.css" class="stylesheet">
     <title>ShapeDrawer (Quick Example)</title>
 </head>
-<body>
-    <div class="wrapper">
+<body class="typ">
+    <div class="wrapper h100">
         <div class="title">
             <h3>ShapeDrawer (Quick Example)</h3>
         </div>
-        <div class="shape-list">
-            <ul>
-                <li><img src="./images/square.svg">Rectangle</li>
-                <li><img src="./images/square.svg">Rectangle</li>
-                <li><img src="./images/circle.svg">Circle</li>
-            </ul>
-        </div>
-        <div class="canvas"><canvas></div>
-        <div class="menu"> 
-            <button class="btn" data-shape="rectangle">
-                <!-- <i class="fa fa-square"></i> -->
+        <div class="gc-1 row-2 flex-col icon-tray">
+            <button class="btn">
                 <img src="./images/square.svg">
             </button>
-            <button class="btn" data-shape="circle">
-                <!-- <i class="fa fa-circle" ></i> -->
+            <button class="btn">
                 <img src="./images/circle.svg">
             </button>
             <button class="btn">
-                <!-- <i class="fa fa-arrows-alt"></i> -->
+                <img src="./images/square.svg">
+            </button>
+            <button class="btn">
+                <img src="./images/circle.svg">
+            </button>
+        </div>
+        <div class="gc-2 row-2"><canvas></div>
+        <div class="gc-3 row-2 flex-col icon-tray"> 
+            <button class="btn" data-shape="rectangle">
+                <img src="./images/square.svg">
+            </button>
+            <button class="btn" data-shape="circle">
+                <img src="./images/circle.svg">
+            </button>
+            <button class="btn">
                 <img src="./images/move.svg">
             </button>
             <button class="btn">
-                <!-- <i class="fa fa-trash"></i> -->
                 <img src="./images/trash.svg">
             </button>
             <button class="btn">
-                <!-- <i class=""></i> -->
                 <img src="./images/droplet.svg">
             </button>
         </div>
