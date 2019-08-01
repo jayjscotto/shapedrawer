@@ -44,6 +44,10 @@ html, body {
     grid-column: 1 / 4;
 }
 
+.gc1-4 {
+    grid-column: 1 / 4;
+}
+
 .gc-1 {
     grid-column: 1;
 }
@@ -65,17 +69,20 @@ html, body {
     position: relative; 
     background-color: var(--background-color);
     padding-bottom: 100%;
-    margin: 0.5em 0;
     cursor: pointer;
+    width: 100%;
+    display: block;
 }
 
 .btn:hover {
     background-color: black;
 }
 
-.btn img {
+.btn svg {
     filter: invert(100);
     position: absolute;
+    top: 0;
+    left: 0;
     left: var(--icon-padding);
     top: var(--icon-padding);
     width: var(--icon-width);
@@ -88,4 +95,12 @@ html, body {
 
 .row-2 {
     grid-row: 2;
+}
+
+.toolbar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: grey;
+    width: 5%;
 }
