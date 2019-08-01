@@ -8,6 +8,8 @@
 
 html, body {
     height: 100%;
+    font-family: Arial;
+    color: white;
 }
 
 .wrapper {
@@ -22,8 +24,6 @@ html, body {
     background-color: var(--header-color);
     grid-row: 1;
     grid-column: 1 / 4;
-    color: white;
-    font-family: 'Arial';
 }
 
 
@@ -33,6 +33,18 @@ html, body {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
+    padding: 2%;
+    text-align: center;
+}
+
+.shape-list li {
+    padding: 0.75em 0;
+}
+
+.shape-list img {
+    position: relative;
+    width: 80%;
+   
 }
 
 .canvas {
