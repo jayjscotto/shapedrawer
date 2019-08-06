@@ -27,7 +27,20 @@
                 <img src="./images/circle.svg">
             </button>
         </div>
-        <div class="gc-2 row-2" id="flexbox"><canvas width="100" height="100"></canvas></div>
+        <div class="gc-2 row-1 flexbox">
+            
+        </div>
+        <div class="gc-2 row-2 flexbox">
+            <form action="" class="setDims">
+                <label for="canvasHeight"> Set Canvas Height: </label>
+                <input type="number" name="canvasHeight" min="100" max="800" placeholder="Height">
+                <label for="canvasWidth"> Set Canvas Width: </label> 
+                <input type="number" name="canvasWidth" min="100" max="800" placeholder="Width">
+                <input type="submit" value="Resize Canvas">
+                <input type="submit" value="Reset Canvas">
+            </form>
+            <canvas width="300px" height="300px"></canvas>
+        </div>
         <div class="gc-3 row-2 flex-col icon-tray"> 
             <button class="btn" data-shape="rectangle">
                 <img src="./images/square.svg">

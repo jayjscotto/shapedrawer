@@ -7,6 +7,7 @@
 
 :root {
     --background-color: rgb(114, 109, 109);
+    --toolbar-bg-color: rgb(153, 152, 152);
     --header-color: rgb(54, 53, 53);
     --display-area-width: 85%;
     --display-toolbar-width: calc((100% - var(--display-area-width)) / 2);
@@ -57,20 +58,20 @@ html, body {
 }
 
 .icon-tray {
-    background-color: var(--background-color);
+    background-color: var(--toolbar-bg-color);
     padding: var(--shape-list-padding);
 }
 
 .btn {
     position: relative; 
-    background-color: var(--background-color);
+    background-color: var(--toolbar-bg-color);
     padding-bottom: 100%;
     margin: 0.5em 0;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: black;
+    background-color: grey;
 }
 
 .btn img {
@@ -86,8 +87,39 @@ html, body {
     flex-direction: column;
 }
 
-#flexbox {
+canvas {
+    margin: 0 auto;
+    background-color: white;
+    filter: drop-shadow(0 0 0.75rem black);
+}
+
+.flexbox {
     display: flex;
+    flex-direction: column;
+    
+    
+    background-color: var(--background-color);
+}
+
+.flexbox form {
+    margin: 2em;
+    display: flex;
+}
+
+.flexbox canvas {
+    justify-content: center;
+    align-items: center;    
+}
+
+input {
+    border-radius: 5px;
+    margin-right: 1.5em;
+}
+
+
+
+input, label {
+    padding: 0.25em;    
 }
 
 .row-2 {
