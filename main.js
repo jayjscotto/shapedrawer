@@ -3,6 +3,9 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const btns = document.querySelectorAll('.btn');
 const shapes = {circle: 'circle', rectangle: 'rectangle' };
+const canvasWidth = document.getElementById('canvasWidth');
+const canvasHeight = document.getElementById('canvasHeight');
+const resizeCanvasBtn = document.getElementById('canvasResizeBtn');
 let currentShape
 
 //circle drawing function
@@ -42,3 +45,10 @@ canvas.addEventListener('click', e => {
         drawRectangle(mousex, mousey);
     }
 });
+
+//canvas resize function
+resizeCanvasBtn.addEventListener('click', e=> {
+    //take input from height and width fields and resize when clicked.
+    canvas.style.width = canvasWidth.value;
+    canvas.style.height = canvasHeight.value;
+})
