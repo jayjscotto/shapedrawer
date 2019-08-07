@@ -36,7 +36,7 @@
                 <input id="canvasHeight" type="number" name="canvasHeight" min="100" max="800" placeholder="Height">
                 <label for="canvasWidth"> Set Canvas Width: </label> 
                 <input id="canvasWidth"type="number" name="canvasWidth" min="100" max="800" placeholder="Width">
-                <input id="canvasResizeBtn" type="submit" value="Resize Canvas">
+                <input id="canvasResizeBtn" type="submit" value="Resize Canvas" onclick="canvasResize(); return false;">
                 <input type="submit" value="Reset Canvas">
             </form>
             <canvas width="300px" height="300px"></canvas>
