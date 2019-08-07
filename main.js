@@ -3,10 +3,30 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const btns = document.querySelectorAll('.btn');
 const shapes = {circle: 'circle', rectangle: 'rectangle' };
-const canvasWidth = document.getElementById('canvasWidth');
-const canvasHeight = document.getElementById('canvasHeight');
+const canvasHeightInput = document.getElementById('canvasHeightInput');
+const canvasWidthInput = document.getElementById('canvasWidthInput');
+
+let canvasHeight = 100;
+let canvasWidth = 100;
+
+canvasHeightInput.value = canvasHeight;
+canvasWidthInput.value = canvasWidth;
+
+//canvas resize function
+const canvasResize = () => {
+    canvasWidth = canvasWidthInput.value;
+    canvasHeight = canvasHeightInput.value;
+    //take input from height and width fields and resize when clicked.
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+}
+
+canvasResize();
+
+canvas.style.display = 'initial';
+
 //const resizeCanvasBtn = document.getElementById('canvasResizeBtn');
-let currentShape
+let currentShape;
 
 //circle drawing function
 const drawCircle = (mousex, mousey) => {
@@ -14,6 +34,7 @@ const drawCircle = (mousex, mousey) => {
     ctx.beginPath();
     ctx.arc(mousex, mousey, 10, 0, Math.PI * 2, false);
     ctx.fill();
+    ctx.closePath();
     ctx.stroke();
 }
 
@@ -27,8 +48,7 @@ const drawRectangle = (mousex, mousey) => {
 for (let btn of btns) {
     btn.addEventListener('click', e => {
         currentShape = e.currentTarget.dataset.shape;
-        console.log(currentShape);
-        });
+    });
 }
 
 //event listener for the canvas, event handler will act based on value of currentShape
@@ -37,7 +57,6 @@ canvas.addEventListener('click', e => {
     let rect = e.target.getBoundingClientRect();
     let mousex = e.clientX - rect.left;
     let mousey = e.clientY - rect.top;
-    console.log(mousex, mousey);
 
     if (currentShape === shapes.circle) {
         drawCircle(mousex, mousey);
@@ -46,11 +65,12 @@ canvas.addEventListener('click', e => {
     }
 });
 
-//canvas resize function
-const canvasResize = () => {
-    //take input from height and width fields and resize when clicked.
-    canvas.style.width = canvasWidth.value + 'px';
-    canvas.style.height = canvasHeight.value + 'px';
-    console.log(canvasWidth.value);
-    console.log(canvasHeight.value);
-}
+canvasHeightInput.addEventListener('input', function() {
+    canvasResize();
+});
+
+canvasWidthInput.addEventListener('input', function() {
+    canvasWidth = canvasWidthInput.value;
+    canvasHeight = canvasHeightInput.value;
+    canvasResize();
+});

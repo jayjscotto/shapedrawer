@@ -5,6 +5,10 @@
     border: none;
 }
 
+canvas {
+    display: none;
+}
+
 :root {
     --background-color: rgb(114, 109, 109);
     --toolbar-bg-color: rgb(153, 152, 152);
@@ -60,6 +64,7 @@ html, body {
 .icon-tray {
     background-color: var(--toolbar-bg-color);
     padding: var(--shape-list-padding);
+    overflow: scroll;
 }
 
 .btn {
