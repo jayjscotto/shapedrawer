@@ -5,47 +5,64 @@ const btns = document.querySelectorAll('.btn');
 const shapes = Object.freeze({circle: 'circle', rectangle: 'rectangle' });
 const canvasHeightInput = document.getElementById('canvasHeightInput');
 const canvasWidthInput = document.getElementById('canvasWidthInput');
+const canvasClearBtn = document.getElementById('canvasClear');
+const listContainer = document.querySelector('[data-shapeList]');
+const circleIcon = document.querySelector('circleTemplate');
+const rectIcon = document.querySelector('rectTemplate');
+
 let currentShape;
+let shapeList = ['circle','rect'];  //shapes that have been drawn
 
 let canvasHeight = 100;
 let canvasWidth = 100;
 
-class rectangle {
-    constructor(x, y, w, h) {
-        this.x = x;
-        this.y = y;
+function renderCircle() {
+    const circleBtn = document.importNode(circleIcon.content, true);
+    listContainer.appendChild(circleBtn);
+}
+
+function renderRect() {
+    const rectBtn = document.importNode(rectIcon.content, true);
+    listContainer.appendChild(rectBtn);
+}
+
+// function clearRenders(container) {} will clear the left icon tray (when canvas is reset)
+ 
+
+//rectangle class
+class Rectangle {
+    constructor(mousex, mousey, w, h) {
+        this.mousex = mousex;
+        this.mousey = mousey;
         this.w = w;
         this.h = h;
     }
 
-    draw(mousex, mousey) {
+    draw() {
         ctx.fillStyle = 'black';
-        ctx.fillRect(mousex - 20, mousey - 30, 40, 60);
+        ctx.fillRect(this.mousex - 20, this.mousey - 30, 40, 60);
     }
 }
 
-class circle {
-    constructor(x, y, startAng, endAng, clockwise){
-        this.x = x;
-        this.y = y;
+//circle class
+class Circle {
+    constructor(mousex, mousey, startAng, endAng, clockwise){
+        this.mousex = mousex;
+        this.mousey = mousey;
         this.startAng = startAng;
         this.endAng = endAng;
         this.clockwise = clockwise;
     }
 
-    draw(mousex, mousey) {
+    draw() {
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.arc(mousex, mousey, 25, 0, Math.PI * 2, false);
+        ctx.arc(this.mousex, this.mousey, 25, 0, Math.PI * 2, false);
         ctx.fill();
         ctx.closePath();
         ctx.stroke();
     }
 }
-
-let shapeList = [];
-
-//////////////////////////////////////////////
 
 canvasHeightInput.value = canvasHeight;
 canvasWidthInput.value = canvasWidth;
@@ -62,11 +79,10 @@ const canvasResize = () => {
 canvasResize();
 
 //canvas clear function
-//const canvasClear = () => {
-//    ctx.clearRect(0, 0, canvasHeightInput.value, CanvasWidthInput.value);
-//}
-//canvasClear();
-
+const canvasClear = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+canvasClear();
 
 //for loop for each button that assigns currentShape variable to the shape data attribute
 for (let btn of btns) {
@@ -83,24 +99,23 @@ canvas.addEventListener('click', e => {
     let mousey = e.clientY - rect.top;
 
     if (currentShape === shapes.circle) {
-        let newCircle = new circle(mousex, mousey, 25, 0, Math.PI * 2, false);
+        let newCircle = new Circle(mousex, mousey, 25, 0, Math.PI * 2, false);
         shapeList.push(newCircle);
-        circle.draw(mousex, mousey);
+        newCircle.draw();
+        renderCircle();
     } else if (currentShape === shapes.rectangle) {
-        let newRect = new rectangle(mousex, mousey);
+        let newRect = new Rectangle(mousex, mousey);
         shapeList.push(newRect);
-        rectangle.draw(mousex, mousey);
+        newRect.draw();
+        renderRect();
     }
 });
 
 
-canvasHeightInput.addEventListener('input', function() {
-    canvasResize();
-});
+canvasHeightInput.addEventListener('input', canvasResize);
 
-canvasWidthInput.addEventListener('input', function() {
-    canvasResize();
-});
+canvasWidthInput.addEventListener('input', canvasResize);
 
+canvasClearBtn.addEventListener('click', canvasClear);
 
 console.log(shapeList);

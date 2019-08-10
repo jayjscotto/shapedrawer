@@ -13,31 +13,36 @@
         <div class="title">
             <h3>ShapeDrawer (Quick Example)</h3>
         </div>
-        <div class="gc-1 row-2 flex-col icon-tray">
+        <div class="gc-1 row-2 flex-col icon-tray" data-shapeList>
+           
             <button class="btn" data-shape="rectangle">
                 <img src="./images/square.svg">
             </button>
-            <button class="btn" data-shape="circle">
+        
+            <button class="list btn" data-shape="circle">
                 <img src="./images/circle.svg">
             </button>
-            <button class="btn">
+                
+            <button class="list btn">
                 <img src="./images/square.svg">
             </button>
-            <button class="btn">
+
+            <button class="list btn">
                 <img src="./images/circle.svg">
             </button>
+                
         </div>
         <div class="gc-2 row-1 flexbox">
             
         </div>
         <div class="gc-2 row-2 flexbox">
-            <form action="" class="setDims">
+            <section class="form">
                 <label for="canvasHeight"> Set Canvas Height: </label>
                 <input id="canvasHeightInput" type="number" name="canvasHeight" min="100" max="800" placeholder="100">
                 <label for="canvasWidth"> Set Canvas Width: </label> 
                 <input id="canvasWidthInput"type="number" name="canvasWidth" min="100" max="800" placeholder="100">
-                <input type="submit" value="Reset Canvas">
-            </form>
+                <input id="canvasClear" type="submit" value="Reset Canvas">
+            </section>
             <canvas width="100px" height="100px"></canvas>
         </div>
         <div class="gc-3 row-2 flex-col icon-tray"> 
@@ -58,6 +63,20 @@
             </button>
         </div>
     </div>
+
+    <template class="rectTemplate">
+        <button class="btn" data-shape="rectangle">
+            <img src="./images/square.svg">
+        </button>
+    </template>
+
+    <template class="circleTemplate r">
+        <button class="btn" data-shape="circle">
+            <img src="./images/circle.svg">
+        </button>
+    </template>
+
     <script src="main.js"></script>
+
 </body>
 </html>
